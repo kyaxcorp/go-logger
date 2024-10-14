@@ -1,7 +1,7 @@
 package paths
 
 import (
-	"github.com/kyaxcorp/go-core/core/config"
+	"github.com/kyaxcorp/go-config"
 	"github.com/kyaxcorp/go-helper/file"
 	"github.com/kyaxcorp/go-helper/filesystem"
 	fsPath "github.com/kyaxcorp/go-helper/filesystem/path"

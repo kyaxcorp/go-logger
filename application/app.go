@@ -3,7 +3,7 @@ package application
 import (
 	"os"
 
-	configEvents "github.com/kyaxcorp/go-core/core/config/events"
+	configEvents "github.com/kyaxcorp/go-config/events"
 	"github.com/kyaxcorp/go-helper/conv"
 	"github.com/kyaxcorp/go-logger"
 	"github.com/kyaxcorp/go-logger/application/vars"

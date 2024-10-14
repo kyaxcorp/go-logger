@@ -1,7 +1,7 @@
 package channel
 
 import (
-	mainConfig "github.com/kyaxcorp/go-core/core/config"
+	mainConfig "github.com/kyaxcorp/go-config"
 	"github.com/kyaxcorp/go-helper/errors2"
 	"github.com/kyaxcorp/go-logger"
 	"github.com/kyaxcorp/go-logger/model"
