@@ -4,7 +4,7 @@ go 1.21.0
 
 require (
 	github.com/gookit/color v1.5.4
-	github.com/kyaxcorp/go-helper v1.0.3
+	github.com/kyaxcorp/go-helper v1.0.4
 	github.com/mattn/go-colorable v0.1.13
 	github.com/rs/zerolog v1.33.0
 	github.com/tidwall/gjson v1.18.0
