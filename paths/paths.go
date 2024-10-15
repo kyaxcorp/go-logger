@@ -1,11 +1,11 @@
 package paths
 
 import (
-	"github.com/kyaxcorp/go-config"
 	"github.com/kyaxcorp/go-helper/file"
 	"github.com/kyaxcorp/go-helper/filesystem"
 	fsPath "github.com/kyaxcorp/go-helper/filesystem/path"
 	"github.com/kyaxcorp/go-helper/folder"
+	app_config "github.com/kyaxcorp/go-logger/app_config"
 )
 
 // cum sa fac ca valoarea interfetilor date sa ajunga in alta parte?!!...
@@ -22,7 +22,7 @@ type Ddqdqw interface {
 }
 
 func GetLogsPath() string {
-	LogsPath := config.GetConfig().Logging.LogsPath
+	LogsPath := app_config.GetConfig().LogsPath
 	//log.Println("LOGS PATH",LogsPath);
 	logsPath, _err := fsPath.GenRealPath(LogsPath, true)
 	if _err != nil {

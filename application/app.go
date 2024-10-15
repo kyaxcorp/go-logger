@@ -3,7 +3,7 @@ package application
 import (
 	"os"
 
-	configEvents "github.com/kyaxcorp/go-config/events"
+	// configEvents "github.com/kyaxcorp/go-config/events"
 	"github.com/kyaxcorp/go-helper/conv"
 	"github.com/kyaxcorp/go-logger"
 	"github.com/kyaxcorp/go-logger/application/vars"
@@ -34,11 +34,11 @@ func CreateAppLogger(o MainLogOptions) {
 	vars.ApplicationLogger = logger.New(applicationLoggerConfig)
 }
 
-func RegisterAppLogger() {
-	var _, _ = configEvents.OnLoaded(func() {
-		CreateAppLogger(MainLogOptions{})
-	})
-}
+// func RegisterAppLogger() {
+// 	var _, _ = configEvents.OnLoaded(func() {
+// 		CreateAppLogger(MainLogOptions{})
+// 	})
+// }
 
 func CreateCoreLogger() bool {
 	logLevel := os.Getenv("GO_CORE_LOG_LEVEL")

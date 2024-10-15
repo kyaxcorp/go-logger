@@ -1,9 +1,9 @@
 package channel
 
 import (
-	mainConfig "github.com/kyaxcorp/go-config"
 	"github.com/kyaxcorp/go-helper/errors2"
 	"github.com/kyaxcorp/go-logger"
+	mainConfig "github.com/kyaxcorp/go-logger/app_config"
 	"github.com/kyaxcorp/go-logger/model"
 	loggerPaths "github.com/kyaxcorp/go-logger/paths"
 	"github.com/rs/zerolog"
@@ -20,13 +20,13 @@ type Config struct {
 // if yes then returns it, if not it creates it based on the configuration
 func GetDefaultChannel() (*model.Logger, error) {
 	cfg := mainConfig.GetConfig()
-	if cfg.Logging.DefaultChannel == "" {
+	if cfg.DefaultChannel == "" {
 		msg := "logger default channel name is empty"
 		l().Warn().Msg(msg)
 		return nil, errors2.New(0, msg)
 	}
 	return GetChannel(Config{
-		ChannelName: cfg.Logging.DefaultChannel,
+		ChannelName: cfg.DefaultChannel,
 	})
 }
 
@@ -37,7 +37,7 @@ func GetDefaultChannel() (*model.Logger, error) {
 func GetChannel(c Config) (*model.Logger, error) {
 	cfg := mainConfig.GetConfig()
 	// Check if exists
-	if _, ok := cfg.Logging.Channels[c.ChannelName]; !ok {
+	if _, ok := cfg.Channels[c.ChannelName]; !ok {
 		// Doesn't exist
 		if c.ReturnDefaultIfNotExists {
 			// Return the default one!
@@ -50,7 +50,7 @@ func GetChannel(c Config) (*model.Logger, error) {
 	}
 
 	// Exists
-	instanceConfig := cfg.Logging.Channels[c.ChannelName]
+	instanceConfig := cfg.Channels[c.ChannelName]
 
 	// Setting default values if some of them are missing in the config!
 	// Setting instance name by key
