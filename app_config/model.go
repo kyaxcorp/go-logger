@@ -1,8 +1,14 @@
 package app_config
 
-import "github.com/kyaxcorp/go-logger/config"
+import (
+	"sync"
+
+	"github.com/kyaxcorp/go-helper/_struct"
+	"github.com/kyaxcorp/go-logger/config"
+)
 
 var cfg Config
+var mu sync.RWMutex
 
 type Config struct {
 	// AppLogLevel -> it's for the app itself... it's the main (root) LOGGER!
@@ -16,5 +22,18 @@ type Config struct {
 }
 
 func GetConfig() Config {
+	mu.RLock()
+	defer mu.RUnlock()
 	return cfg
+}
+
+func SetDefaults(cf *Config) error {
+	return _struct.SetDefaultValues(cf)
+}
+
+func init() {
+	err := SetDefaults(&cfg)
+	if err != nil {
+		panic(err)
+	}
 }
